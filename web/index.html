@@ -6,9 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hei maailma</title>
   </head>
-  <body>
-    <h1>Heroku is fantastic</h1>
+  <body ng-app="MovieApp">
+    <h1>MovieApp</h1>
 
+    <div ng-controller="AddMovieController">
+        
+        <form name="movieForm">
+        
+        Name:<input type="text" ng-model="movieName"><br>
+        Year:<input type="text" ng-model="movieYear"><br>
+        Director:<input type="text" ng-model="movieDirector"><br>
+        Description:<input type="text" ng-model="movieDescription"><br>
+        <button ng-click="addMovie()">Add movie!</button>
+        
+        </form>
+    </div>
+    
+    <div ng-controller="ListMoviesController">
+        
+        <table>
+            <th>Movie</th>
+            <th>Year</th>
+            <th>Director</th>
+            <th>Descripion</th>
+            
+            <tr ng-repeat="movie in movies">
+                <td>{{movie.name}}</td>
+                <td>{{movie.year}}</td>
+                <td>{{movie.director}}</td>
+                <td>{{movie.description}}</td>
+            </tr>
+        </table>
+    </div>
+    
     <!-- Hyödyllisiä kirjastoja -->
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
@@ -17,5 +47,7 @@
 
     <!-- Linkitä omat tiedostosi tähän (huomaa, että polun juuri on web-kansio!) -->
     <script src="app/app.js"></script>    
+    <script src="app/movieapp_service.js"></script>
+    <script src="app/movieapp_controller.js"></script>
   </body>
 </html>
