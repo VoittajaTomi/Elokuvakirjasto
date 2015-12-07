@@ -1,0 +1,14 @@
+
+    <div ng-controller="AddMovieController">
+        
+        <form name="movieForm">
+        
+        Name:<input type="text" ng-model="movieName" name="movieName" required><span style="color:red" ng-show="movieForm.movieName.$invalid && movieForm.movieName.$dirty">invalid movie name</span><br>
+        Year:<input type="text" ng-model="movieYear" name="movieYear" required><span style="color:red" ng-show="movieForm.movieYear.$invalid && movieForm.movieYear.$dirty">invalid movie year</span><br>
+        Director:<input type="text" ng-model="movieDirector" name="movieDirector" required><span style="color:red" ng-show="movieForm.movieDirector.$invalid && movieForm.movieDirector.$dirty">invalid movie director</span><br>
+        Description:<input type="text" ng-model="movieDescription" name="movieDescription" required><span style="color:red" ng-show="movieForm.movieDescription.$invalid && movieForm.movieDescription.$dirty">invalid movie description</span><br>
+        <button ng-click="addMovie()" ng-disabled="movieForm.$invalid">Add movie!</button>
+        
+        </form>
+    </div>
+    
