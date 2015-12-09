@@ -1,0 +1,17 @@
+
+    
+    <div ng-controller="ViewMovieController">
+
+        <h1>{{movie.name}}</h1>
+        
+        <p>
+            Year: {{movie.year}}
+            <br>Director: {{movie.director}}
+            <br>Description: {{movie.description}}
+            
+        </p>
+        
+        <a ng-href="#/movies/{{movie.$id}}/edit">edit</a>
+
+    </div>
+    

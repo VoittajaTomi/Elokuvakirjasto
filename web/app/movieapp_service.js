@@ -7,7 +7,7 @@
 
 MovieApp.service("FirebaseService", function($firebaseArray){
    
-   var firebaseRef = new Firebase("https://scorching-fire-2758.firebaseio.com/movies");
+   var firebaseRef = new Firebase(FIREBASE_URL + "/movies");
    
    var movies = $firebaseArray(firebaseRef);
    
@@ -19,7 +19,24 @@ MovieApp.service("FirebaseService", function($firebaseArray){
        movies.$add(movie);
    }
    
+   
+   this.getMovie=function(key,done){
+       console.log("getMovie");
+       movies.$loaded(function(){
+           console.log("hello from $loaded, key\""+key+"\"");
+           done(movies.$getRecord(key));
+       });
+   }
+   
+
+    this.saveMovie = function(movie){
+        
+        movies.$save(movie);
+        
+    }
     
-    
+    this.removeMovie = function(movie){
+        movies.$remove(movie);
+    }
     
 });
