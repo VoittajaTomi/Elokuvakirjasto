@@ -5,12 +5,25 @@
  */
 
 
-MovieApp.controller("ListMoviesController", function($scope, FirebaseService){
+MovieApp.controller("ListMoviesController", function($scope, FirebaseService, OMDBService){
+   
+   $scope.omdbSearched = false;;
    
     $scope.movies = FirebaseService.getMovies();
 
     $scope.deleteMovie = function(movie){
         FirebaseService.removeMovie(movie);
+    }
+    
+    $scope.searchOMDB = function(){
+        
+        $scope.omdbSearched = true;
+        
+        OMDBService.findMovie($scope.omdbName, $scope.omdbYear).success(function(movies){
+            $scope.omdbResults = movies.Search;
+            console.log($scope.omdbResults);
+        });
+        
     }
 
     

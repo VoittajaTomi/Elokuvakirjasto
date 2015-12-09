@@ -17,5 +17,29 @@
                 <td><button ng-click="deleteMovie(movie)">Delete</button></td>
             </tr>
         </table>
+        
+        <h3>Search OMDB</h3>
+        
+        Name: <input ng-model="omdbName"><br>
+        Year: <input ng-model="omdbYear"><br>
+        
+        <button ng-click="searchOMDB()">Search from OMDB</button>
+        
+        <div class="omdbResults" ng-show="omdbResults">
+        <ul>
+            
+            <li ng-repeat="result in omdbResults"><a href="http://www.imdb.com/title/{{result.imdbID}}">{{result.Title}} {{result.Year}}</a></li>
+            
+            <!--
+            
+            {{todosDone}} <span ng-pluralize count="todosDone" when="{ '0': 'tehtävää', 'one': 'tehtävä', 'other': 'tehtävää' }"></span> tehty, {{todos.length - todosDone}} <span ng-pluralize count="todos.length - todosDone" when="{ '0': 'tehtävää', 'one': 'tehtävä', 'other': 'tehtävää' }"></span> jäljellä
+            
+            -->
+            
+            
+        </ul>
+            Haulla löytyi {{omdbResults.length}} <ng-pluralize count="omdbResults.length" when="{ '1': 'tulos', 'other' : 'tulosta' }"></ng-pluralize>
+        </div>
+  
     </div>
     
